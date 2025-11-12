@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зелене Меню</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at top left, #b0f2a1, #4caf50, #1b5e20);
+            color: #fff;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        .menu {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            gap: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .menu a {
+            text-decoration: none;
+            color: #e0f7d4;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+            transition: 0.3s;
+            border-radius: 12px;
+        }
+        .menu a:hover::after {
+            width: 100%;
+        }
+        .menu a:hover {
+            color: #1b5e20;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Skpint</h1>
+
+    <nav class="menu">
+        <a href="courses.html">Перейти до курсів</a>
+    </nav>
+
+</body>
+</html>
