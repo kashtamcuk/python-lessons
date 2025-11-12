@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Курс Python</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #a5d6a7, #388e3c);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      padding: 40px;
+    }
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      text-align: center;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: auto;
+    }
+    li {
+      background-color: rgba(255,255,255,0.1);
+      margin-bottom: 15px;
+      padding: 15px 25px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    li:hover {
+      background-color: rgba(255,255,255,0.3);
+      cursor: pointer;
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+    }
+    .completed::after {
+      content: " ✅";
+      color: #c8e6c9;
+      font-weight: bold;
+    }
+    .back {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .back a {
+      color: #e0f7d4;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: block;
+      margin: 10px 0;
+    }
+    .progress-link {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .progress-link a {
+      background-color: #2e7d32;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+    .progress-link a:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📘 Теми курсу Python</h2>
+
+  <ul>
+    <li><a href="lesson1.html" id="l1">💡 Змінні та типи даних</a></li>
+    <li><a href="lesson2.html" id="l2">🔄 Умови (if, else)</a></li>
+    <li><a href="lesson3.html" id="l3">🔁 Цикли</a></li>
+    <li><a href="lesson4.html" id="l4">📜 Списки та словники</a></li>
+    <li><a href="lesson5.html" id="l5">🧠 Функції та модулі</a></li>
+  </ul>
+
+  <div class="progress-link">
+    <a href="progress.html">📊 Перевірити прогрес курсу</a>
+  </div>
+
+  <div class="back">
+    <a href="menu.html">← Назад до головного меню</a>
+  </div>
+
+  <script>
+    const lessons = ['lesson1', 'lesson2', 'lesson3', 'lesson4', 'lesson5'];
+    lessons.forEach((id, index) => {
+      if (localStorage.getItem(id + '_completed') === 'true') {
+        document.getElementById('l' + (index + 1)).classList.add('completed');
+      }
+    });
+  </script>
+
+</body>
+</html>

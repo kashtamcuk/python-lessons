@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Вхід / Реєстрація</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #fce4ec, #f3e5f5);
+      font-family: 'Segoe UI', sans-serif;
+      color: #4a148c;
+      padding: 40px;
+      text-align: center;
+    }
+    h2 { margin-bottom: 20px; }
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 250px;
+      border-radius: 8px;
+      border: 1px solid #ba68c8;
+    }
+    button {
+      background-color: #8e24aa;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    button:hover { background-color: #6a1b9a; }
+    .msg { margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h2>👤 Вхід або Реєстрація</h2>
+
+  <input type="text" id="username" placeholder="Ім’я користувача">
+  <input type="password" id="password" placeholder="Пароль">
+
+  <button onclick="register()">Зареєструватися</button>
+  <button onclick="login()">Увійти</button>
+
+  <div id="message" class="msg"></div>
+
+  <script>
+    function register() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if (!user || !pass) {
+        document.getElementById('message').textContent = "Заповни всі поля!";
+        return;
+      }
+      if (localStorage.getItem("user_" + user)) {
+        document.getElementById('message').textContent = "Такий користувач вже існує!";
+      } else {
+        localStorage.setItem("user_" + user, pass);
+        document.getElementById('message').textContent = "✅ Реєстрація успішна! Тепер увійди.";
+      }
+    }
+
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      const savedPass = localStorage.getItem("user_" + user);
+      if (savedPass && savedPass === pass) {
+        document.getElementById('message').textContent = "✅ Вхід успішний!";
+        // Перехід до уроків
+        window.location.href = "level2.html";
+      } else {
+        document.getElementById('message').textContent = "❌ Невірний логін або пароль!";
+      }
+    }
+  </script>
+
+</body>
+</html>

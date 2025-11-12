@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Урок 1: Змінні та типи даних</title>
+  <style>
+    body {
+      background: linear-gradient(to right,#c8e6c9,#81c784);
+      font-family:'Segoe UI',sans-serif;
+      color:#1b5e20;
+      padding:40px;
+    }
+    h2 {
+      font-size:2.2rem;
+      margin-bottom:20px;
+      text-shadow:1px 1px 4px rgba(0,0,0,0.2);
+    }
+    section {
+      background:#ffffffaa;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:30px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    }
+    h3 {
+      margin-top:0;
+      font-size:1.4rem;
+    }
+    pre {
+      background:#f1f8e9;
+      padding:15px;
+      border-radius:8px;
+      overflow-x:auto;
+    }
+    label {
+      display:block;
+      margin:10px 0;
+      font-weight:bold;
+    }
+    input[type="checkbox"] {
+      margin-right:10px;
+    }
+    input[type="file"] {
+      margin-top:10px;
+    }
+    button {
+      background:#2e7d32;
+      color:#fff;
+      padding:10px 20px;
+      border:none;
+      border-radius:8px;
+      margin-top:20px;
+      font-size:1rem;
+      cursor:pointer;
+    }
+    button:disabled {
+      background:#a5d6a7;
+      cursor:not-allowed;
+    }
+    .success-animation {
+      display:none;
+      margin-top:20px;
+      font-size:1.2rem;
+      color:green;
+      animation:fadeIn 0.6s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      from {opacity:0;transform:scale(0.9);}
+      to {opacity:1;transform:scale(1);}
+    }
+    a {
+      display:inline-block;
+      margin-top:30px;
+      color:#1b5e20;
+      font-weight:bold;
+      text-decoration:none;
+    }
+    .preview {
+      margin-top:10px;
+      max-width:100%;
+      border-radius:8px;
+      display:none;
+    }
+
+    /* Книжка */
+    #theoryBook {
+      background:#f1f8e9;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+      margin-bottom:30px;
+    }
+    .page {
+      min-height:120px;
+      font-size:1.1rem;
+      line-height:1.6;
+    }
+    .controls {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:15px;
+    }
+    .controls button {
+      background-color:#81c784;
+      border:none;
+      padding:8px 16px;
+      border-radius:8px;
+      color:#fff;
+      font-weight:bold;
+      cursor:pointer;
+    }
+    .controls button:hover {
+      background-color:#66bb6a;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>💡 Урок 1: Змінні та типи даних</h2>
+
+  <section>
+    <h3>📘 Теорія: Змінні та типи даних</h3>
+    <div id="theoryBook">
+      <div class="page" id="pageContent">Завантаження...</div>
+      <div class="controls">
+        <button onclick="prevPage()">⬅️ Назад</button>
+        <span id="pageNumber">1 / 4</span>
+        <button onclick="nextPage()">Далі ➡️</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>🧪 Приклад коду</h3>
+    <pre><code>name = "Мар'ян"
+age = 25
+height = 1.82
+is_student = True
+print(name, age, height, is_student)</code></pre>
+  </section>
+
+  <section>
+    <h3>🎯 Завдання</h3>
+    <p>Створи змінні для:</p>
+    <ul>
+      <li>Твого улюбленого кольору</li>
+      <li>Кількості годин, які ти вчишся щодня</li>
+      <li>Чи ти любиш Python (True/False)</li>
+    </ul>
+    <p>Виведи їх на екран за допомогою <code>print()</code>.</p>
+  </section>
+
+  <section>
+    <h3>✅ Відмітка виконання</h3>
+    <label><input type="checkbox" id="readTheory"> Я прочитав теорію</label>
+    <label><input type="checkbox" id="sawExample"> Я переглянув приклад коду</label>
+  </section>
+
+  <section>
+    <h3>📤 Здача завдання</h3>
+    <input type="file" id="codeImage" accept="image/*">
+    <img id="preview" class="preview" alt="Попередній перегляд">
+  </section>
+
+  <section>
+    <button id="completeBtn" disabled>✅ Завершити тему</button>
+    <div id="successMsg" class="success-animation">✅ Тему завершено! Прогрес збережено.</div>
+  </section>
+
+  <a href="courses.html">← Назад до тем</a>
+
+  <script>
+    // Книжка
+    const pages = [
+      `🔹 <strong>Що таке змінна?</strong><br>Змінна — це іменована область пам’яті, яка зберігає значення. У Python змінну створюють просто: <code>x = 5</code>.`,
+      `🔹 <strong>Типи даних:</strong><br>
+      <ul>
+        <li><code>int</code> — ціле число: <code>42</code></li>
+        <li><code>float</code> — число з комою: <code>3.14</code></li>
+        <li><code>str</code> — рядок: <code>"Привіт"</code></li>
+        <li><code>bool</code> — логічне значення: <code>True</code> або <code>False</code></li>
+      </ul>`,
+      `🔹 <strong>Приклади використання:</strong><br>
+      <pre><code>name = "Мар'ян"
+age = 25
+height = 1.82
+is_student = True</code></pre>`,
+      `🔹 <strong>Типові помилки:</strong><br>
+      <ul>
+        <li>❌ Використання змінної до її створення</li>
+        <li>❌ Невірне перетворення типів: <code>int("abc")</code></li>
+        <li>✅ Використовуй <code>type(x)</code> для перевірки типу</li>
+      </ul>`
+    ];
+    let currentPage = 0;
+    function updatePage() {
+      document.getElementById('pageContent').innerHTML = pages[currentPage];
+      document.getElementById('pageNumber').textContent = `${currentPage + 1} / ${pages.length}`;
+    }
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        currentPage++;
+        updatePage();
+      }
+    }
+    function prevPage() {
+      if (currentPage > 0) {
+        currentPage--;
+        updatePage();
+      }
+    }
+
+    // Прогрес
+    const theory = document.getElementById('readTheory');
+    const example = document.getElementById('sawExample');
+    const image = document.getElementById('codeImage');
+    const preview = document.getElementById('preview');
+    const button = document.getElementById('completeBtn');
+    const successMsg = document.getElementById('successMsg');
+
+    window.addEventListener('DOMContentLoaded', () => {
+      updatePage();
+      theory.checked = localStorage.getItem('lesson1_readTheory') === 'true';
+      example.checked = localStorage.getItem('lesson1_sawExample') === 'true';
+
+      const completed = localStorage.getItem('lesson1_completed') === 'true';
+      if (completed) {
+        successMsg.style.display = 'block';
+        button.textContent = '✅ Зараховано';
+        button.disabled = true;
+      }
+      checkCompletion();
+    });
+
+    function checkCompletion() {
+      const hasImage = image.files && image.files.length > 0;
+      button.disabled = !(theory.checked && example.checked && hasImage);
+      localStorage.setItem('lesson1_readTheory', theory.checked ? 'true' : 'false');
+      localStorage.setItem('lesson1_sawExample', example.checked ? 'true' : 'false');
+    }
+
+    // Попередній перегляд зображення
+    image.addEventListener('change', () => {
+      if (image.files && image.files[0]) {
+        const reader = new FileReader();
+        reader.onload = e => {
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        };
+        reader.readAsDataURL(image.files[0]);
+      } else {
+        preview.style.display = 'none';
+        preview.src = '';
+      }
+      checkCompletion();
+    });
+
+    theory.addEventListener('change', checkCompletion);
+    example.addEventListener('change', checkCompletion);
+
+    function markAsCompleted() {
+      localStorage.setItem('lesson1_completed', 'true');
+      successMsg.style.display = 'block';
+      successMsg.style.animation = 'fadeIn 0.6s ease-in-out forwards';
+      button.textContent = '✅ Зараховано';
+      button.disabled = true;
+    }
+
+    button.addEventListener('click', markAsCompleted);
+  </script>
+
+</body>
+</html>
